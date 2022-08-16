@@ -1,0 +1,52 @@
+<%- include('./partials/header.ejs'); -%>
+<div class="container">
+<table class="table table-dark">
+
+    <!-- <div class="card"> -->
+    <% if(user){ %> 
+        <tr>
+            <th>
+                todo
+            </th>
+            <th>
+                final date
+            </th>
+            <th>
+                status
+            </th>
+        </tr>
+        <% for(i=0;i<todolist.length;i++){ %> 
+            <tr>
+                <div class="card-body" id="<%= i %>">
+                    
+                    <td>
+                        <%= todolist[i] %>
+                    </td>
+                    <td>
+                        <%= date[i] %> 
+                    </td>
+                    <td>
+                        <form action="/remove" method="post">
+                            <button name="index" value="<%= i %>">Finished</button>
+                        </form>
+                    </td>
+                    
+                </div>
+            </tr>
+            <% } %> 
+            <form action="/add" method="post">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="newtodo">
+                    <input type="date" class="form-control" name="date">
+                    <div class="input-group-append">
+                        <button class="input-group-text" id="basic-addon2">+</span>
+                        </div>
+            </div>
+                    
+            </form>
+            <% } %> 
+            <!-- </div> -->
+    </table>
+</div>
+        
+<%- include('./partials/footer.ejs'); -%>
